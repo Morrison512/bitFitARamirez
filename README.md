@@ -42,7 +42,7 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I misunderstood some things with the DAO, and had some challenges figuring out what was needed in the adapter.
 
 ## License
 

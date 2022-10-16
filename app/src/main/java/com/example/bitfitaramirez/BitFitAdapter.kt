@@ -24,7 +24,7 @@ class BitFitAdapter(private val context: Context,private val BitLists: List<BitF
 
         init {
             dayTV = itemView.findViewById(R.id.enterdDayTV)
-            sleepTV = itemView.findViewById(R.id.eTHoursSlept)
+            sleepTV = itemView.findViewById(R.id.enterdHoursSlept)
 
         }
     }

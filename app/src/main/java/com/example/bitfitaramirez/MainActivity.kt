@@ -35,16 +35,30 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
             this.startActivity(intent)
         }
+        lifecycleScope.launch {
+            (application as BitFItApplication).db.articleDao().getAll().collect { databaseList ->
+                databaseList.map { entity ->
+                    BitFit(
+                        entity.dayText,
+                        entity.hoursSlept,
+                    )
+                }.also { mappedList ->
+                    bitfits.clear()
+                    bitfits.addAll(mappedList)
+                    bitfitAdapter.notifyDataSetChanged()
+                }
+            }
+        }
 
-        val bitFit = intent.getSerializableExtra("EXTRA_ENTRY")
+        val bitFit = intent.getSerializableExtra("EXTRA_ENTRY") as BitFit?
 
         if(bitFit != null) {
             Log.d(TAG, "got extra")
             lifecycleScope.launch(IO) {
                 (application as BitFItApplication).db.articleDao().insert(
                     BitFitEntity(
-                        dayText = bitFit.day,
-                        hoursSlept = bitFit.sleep
+                        dayText = bitFit.dayText,
+                        hoursSlept = bitFit.hoursSlept
                     )
                 )
             }

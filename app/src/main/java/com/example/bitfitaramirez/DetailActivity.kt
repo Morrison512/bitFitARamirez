@@ -25,18 +25,11 @@ class DetailActivity : AppCompatActivity() {
         enterBtn = findViewById(R.id.enterButton)
 
         enterBtn.setOnClickListener {
-            if(dayInput.text.isNotEmpty()){
+            if(dayInput.text.isNotEmpty() && sleepInput.text.isNotEmpty()){
                 val intent = Intent(this, MainActivity::class.java)
                 Log.d("DTAILACT", dayInput.text.toString());
-                val day = BitFit(dayInput.text.toString())
+                val day = BitFit(dayInput.text.toString(), sleepInput.text.toString())
                 intent.putExtra(EXTRA_ENTRY, day)
-                this.startActivity(intent)
-            }
-            if(sleepInput.text.isNotEmpty()){
-                val intent = Intent(this, MainActivity::class.java)
-                Log.d("DTAILACT", sleepInput.text.toString());
-                val sleep = BitFit(sleepInput.text.toString())
-                intent.putExtra(EXTRA_ENTRY, sleep)
                 this.startActivity(intent)
             }
             else {

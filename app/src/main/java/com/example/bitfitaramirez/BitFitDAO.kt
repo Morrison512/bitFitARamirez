@@ -12,7 +12,7 @@ interface BitFitDAO {
     fun getAll(): Flow<List<BitFitEntity>>
 
     @Insert
-    fun insert(dayText: BitFitEntity, hoursSlept: BitFitEntity)
+    fun insert(bitFit: BitFitEntity)
 
     @Query("DELETE FROM bitfit_table")
     fun deleteAll()
